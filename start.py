@@ -98,7 +98,8 @@ class LaserWeaponArmory(Scene):
         print "панель с кнопками, и вам надо ввести правильный код, чтобы достать бомбу. "
         print "Если вы 10 раз введете неправильный код, контейнер заблокируется, и вы "
         print "не сможете достать бомбу. Код состоит из трех цифр."
-        code = "%d %d %d" % (randint(1,9), randint(1,9), randint(1,9))
+        code = "%d%d%d" % (randint(1,9), randint(1,9), randint(1,9))
+        print code
         quess = raw_input("[keypad]> ")
         quesses = 0
     
@@ -168,6 +169,7 @@ class EscapePod(Scene):
         print "Какой номер вы выбираете?"
         
         good_pod = randint(1,5)
+        print good_pod
         quess = raw_input("[pod #]> ")
         
         if int(quess) != good_pod:
@@ -190,6 +192,7 @@ class Finished(Scene):
 
     def enter(self):
         print "Вы победили! Отличная работа!"
+        exit(1)
 
 
 class Map(object):
@@ -200,7 +203,7 @@ class Map(object):
         'the_fuelcell': TheFuelcell(),
         'escape_pod': EscapePod(),
         'death': Death(),
-        'finished': Finished(),
+        'finished': Finished()
         }
         
     def __init__(self, start_scene):
